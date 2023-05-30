@@ -9,7 +9,8 @@ local lazygit = {
 }
 
 local git_signs = {
-  'lewis6991/gitsigns.nvim'
+  'lewis6991/gitsigns.nvim',
+  opts = {},
 }
 
 return { lazygit, git_signs }
