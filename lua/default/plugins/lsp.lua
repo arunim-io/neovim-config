@@ -38,10 +38,4 @@ local rust = {
   dependencies = { 'nvim-lua/plenary.nvim', 'mfussenegger/nvim-dap' },
 }
 
-return {
-  lsp_zero,
-  null_ls,
-  inlay_hints,
-  flutter,
-  rust,
-}
+return { lsp_zero, null_ls, inlay_hints, flutter, rust }

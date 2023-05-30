@@ -1,6 +1,6 @@
 local lsp = require("lsp-zero").preset("recommended")
 
-lsp.on_attach(function(client, bufnr)
+lsp.on_attach(function(_, bufnr)
   lsp.default_keymaps { buffer = bufnr }
 end)
 
@@ -15,7 +15,7 @@ lsp.format_on_save {
     timeout_ms = 10000,
   },
   servers = {
-    ["null-ls"] = { "lua" },
+    ["lua_ls"] = { "lua" },
   },
 }
 
@@ -64,13 +64,12 @@ local rust_tools = require 'rust-tools'
 rust_tools.setup {
   tools = {
     on_initialized = function() inlay_hints.set_all() end,
-    inlay_hints = {
-      auto = false,
-    },
+    inlay_hints = { auto = false },
   },
   server = {
     on_attach = function(client, bufnr)
       inlay_hints.on_attach(client, bufnr)
+
       vim.keymap.set('n', '<leader>ca', rust_tools.hover_actions.hover_actions, { buffer = bufnr })
     end
   },
