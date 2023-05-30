@@ -6,6 +6,7 @@ local indent_blankline = {
     space_char_blankline = " ",
   }
 }
+
 local treesitter = {
   "nvim-treesitter/nvim-treesitter",
   build = function() require("nvim-treesitter.install").update({ with_sync = true }) end,
@@ -71,4 +72,16 @@ local which_key = {
   opts = {},
 }
 
-return { indent_blankline, treesitter, telescope, comment, which_key }
+local lualine = {
+  'nvim-lualine/lualine.nvim',
+  dependencies = { 'nvim-tree/nvim-web-devicons' },
+  config = function()
+    local vscode = require('lualine.themes.vscode')
+
+    vscode.normal.c.bg = 'None'
+
+    require('lualine').setup { options = { theme = vscode } }
+  end,
+}
+
+return { indent_blankline, treesitter, telescope, comment, which_key, lualine }
