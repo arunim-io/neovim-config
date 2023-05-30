@@ -14,16 +14,17 @@ local treesitter = {
 local telescope = {
   'nvim-telescope/telescope.nvim',
   branch = '0.1.x',
-  init = function()
-    require('default.settings.telescope').load_extensions({ 'fzf', 'command_center', 'undo', 'adjacent' })
+  config = function()
+    local telescope = require 'telescope'
+
+    telescope.load_extension('fzf')
+    telescope.load_extension('adjacent')
   end,
   dependencies = {
     'nvim-lua/plenary.nvim',
     { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
     'prochri/telescope-all-recent.nvim',
-    "FeiyouG/command_center.nvim",
     'LukasPietzschmann/telescope-tabs',
-    "debugloop/telescope-undo.nvim",
     "MaximilianLloyd/adjacent.nvim",
   },
   keys = {
@@ -37,16 +38,6 @@ local telescope = {
       function() require('telescope.builtin').grep_string({ search = vim.fn.input('Grep > ') }) end,
 
       desc = 'Search in root directory with Telescope',
-    },
-    {
-      '<leader>u',
-      function() require("telescope.extensions.undo").undo() end,
-      desc = 'Show undotree with Telescope',
-    },
-    {
-      '<leader>pc',
-      '<cmd>Telescope command_center<cr>',
-      desc = 'Show command center with Telescope',
     },
     {
       '<leader>pt',
