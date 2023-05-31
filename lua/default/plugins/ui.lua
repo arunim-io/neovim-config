@@ -77,20 +77,11 @@ local which_key = {
 local lualine = {
   'nvim-lualine/lualine.nvim',
   dependencies = { 'nvim-tree/nvim-web-devicons' },
-  config = function()
-    local theme = require('lualine.themes.codedark')
-
-    theme.normal.c.bg = 'None'
-
-    require('lualine').setup {
-      options = {
-        theme = theme,
-        sections = {
-          lualine_x = { 'aerial', 'encoding', 'fileformat', 'filetype' },
-        },
-      },
-    }
-  end,
+  opts = {
+    options = {
+      theme = 'codedark',
+    },
+  },
 }
 
 return { indent_blankline, treesitter, telescope, comment, which_key, lualine }

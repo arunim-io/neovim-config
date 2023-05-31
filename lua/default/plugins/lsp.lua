@@ -27,6 +27,8 @@ local null_ls = {
 
 local inlay_hints = { 'simrat39/inlay-hints.nvim' }
 
+local diagnostic_highlight = { 'Kasama/nvim-custom-diagnostic-highlight', opts = {} }
+
 local aerial = {
   'stevearc/aerial.nvim',
   dependencies = {
@@ -65,4 +67,4 @@ local rust = {
   dependencies = { 'nvim-lua/plenary.nvim', 'mfussenegger/nvim-dap' },
 }
 
-return { lsp_zero, null_ls, inlay_hints, flutter, rust, aerial, fidget, lightbulb }
+return { lsp_zero, null_ls, inlay_hints, flutter, rust, aerial, fidget, lightbulb, diagnostic_highlight }
