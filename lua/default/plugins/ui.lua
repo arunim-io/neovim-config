@@ -29,17 +29,17 @@ local telescope = {
     telescope.load_extension('fzf')
     telescope.load_extension('adjacent')
     telescope.load_extension("undo")
+    telescope.load_extension('aerial')
   end,
   keys = {
     {
-      '<leader>pf',
+      '<leader>pfr',
       function() require('telescope.builtin').find_files() end,
       desc = 'Open root directory with Telescope',
     },
     {
       '<leader>ps',
       function() require('telescope.builtin').grep_string({ search = vim.fn.input('Grep > ') }) end,
-
       desc = 'Search in root directory with Telescope',
     },
     {
@@ -48,12 +48,18 @@ local telescope = {
       desc = 'Show open tabs with Telescope',
     },
     {
-      "<leader>pa",
+      "<leader>pfa",
       "<cmd>Telescope adjacent<cr>",
-      { noremap = true, silent = false },
+      noremap = true,
+      silent = false,
       desc = 'Open adjacent files with Telescope',
     },
     { "<leader>u", "<cmd>Telescope undo<cr>", desc = 'Open undotree with Telescope' },
+    {
+      '<leader>pa',
+      "<cmd>Telescope aerial<cr>",
+      desc = "Open Aerial with Telescope",
+    },
   },
 }
 
@@ -76,11 +82,18 @@ local lualine = {
   'nvim-lualine/lualine.nvim',
   dependencies = { 'nvim-tree/nvim-web-devicons' },
   config = function()
-    local vscode = require('lualine.themes.vscode')
+    local theme = require('lualine.themes.codedark')
 
-    vscode.normal.c.bg = 'None'
+    theme.normal.c.bg = 'None'
 
-    require('lualine').setup { options = { theme = vscode } }
+    require('lualine').setup {
+      options = {
+        theme = theme,
+        sections = {
+          lualine_x = { 'aerial', 'encoding', 'fileformat', 'filetype' },
+        },
+      },
+    }
   end,
 }
 

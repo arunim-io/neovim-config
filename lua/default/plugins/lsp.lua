@@ -27,6 +27,23 @@ local null_ls = {
 
 local inlay_hints = { 'simrat39/inlay-hints.nvim' }
 
+local aerial = {
+  'stevearc/aerial.nvim',
+  dependencies = {
+    "nvim-treesitter/nvim-treesitter",
+    "nvim-tree/nvim-web-devicons"
+  },
+  opts = {
+    placement = 'edge',
+    autojump = true,
+  },
+  keys = {
+    { '<leader>a', '<cmd>AerialToggle!<CR>', desc = 'Open code outline window for current file with Aerial' },
+  },
+}
+
+local fidget = { 'j-hui/fidget.nvim', opts = {} }
+
 local flutter = {
   'akinsho/flutter-tools.nvim',
   lazy = false,
@@ -38,4 +55,4 @@ local rust = {
   dependencies = { 'nvim-lua/plenary.nvim', 'mfussenegger/nvim-dap' },
 }
 
-return { lsp_zero, null_ls, inlay_hints, flutter, rust }
+return { lsp_zero, null_ls, inlay_hints, flutter, rust, aerial, fidget }
