@@ -54,12 +54,8 @@ local telescope = {
       silent = false,
       desc = 'Open adjacent files with Telescope',
     },
-    { "<leader>u", "<cmd>Telescope undo<cr>", desc = 'Open undotree with Telescope' },
-    {
-      '<leader>pa',
-      "<cmd>Telescope aerial<cr>",
-      desc = "Open Aerial with Telescope",
-    },
+    { "<leader>u",  "<cmd>Telescope undo<cr>",   desc = 'Open undotree with Telescope' },
+    { '<leader>pa', "<cmd>Telescope aerial<cr>", desc = "Open Aerial with Telescope" },
   },
 }
 

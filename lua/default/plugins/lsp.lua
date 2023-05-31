@@ -44,6 +44,16 @@ local aerial = {
 
 local fidget = { 'j-hui/fidget.nvim', opts = {} }
 
+local lightbulb = {
+  'kosayoda/nvim-lightbulb',
+  dependencies = { 'antoinemadec/FixCursorHold.nvim' },
+  opts = {
+    autocmd = {
+      enabled = true,
+    },
+  },
+}
+
 local flutter = {
   'akinsho/flutter-tools.nvim',
   lazy = false,
@@ -55,4 +65,4 @@ local rust = {
   dependencies = { 'nvim-lua/plenary.nvim', 'mfussenegger/nvim-dap' },
 }
 
-return { lsp_zero, null_ls, inlay_hints, flutter, rust, aerial, fidget }
+return { lsp_zero, null_ls, inlay_hints, flutter, rust, aerial, fidget, lightbulb }
