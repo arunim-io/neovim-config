@@ -5,6 +5,7 @@ local lsp_zero = {
     { 'neovim/nvim-lspconfig' },
     {
       'williamboman/mason.nvim',
+      ---@diagnostic disable-next-line: param-type-mismatch
       build = function() pcall(vim.cmd, 'MasonUpdate') end,
     },
     { 'williamboman/mason-lspconfig.nvim' },
@@ -67,4 +68,6 @@ local rust = {
   dependencies = { 'nvim-lua/plenary.nvim', 'mfussenegger/nvim-dap' },
 }
 
-return { lsp_zero, null_ls, inlay_hints, flutter, rust, aerial, fidget, lightbulb, diagnostic_highlight }
+local neodev = { "folke/neodev.nvim", opts = {} }
+
+return { lsp_zero, null_ls, neodev, inlay_hints, flutter, rust, aerial, fidget, lightbulb, diagnostic_highlight }

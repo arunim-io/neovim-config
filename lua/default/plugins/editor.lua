@@ -49,7 +49,6 @@ local ccc = {
     highlighter = {
       auto_enable = true,
       lsp = true,
-      color = '#000'
     },
   },
 }

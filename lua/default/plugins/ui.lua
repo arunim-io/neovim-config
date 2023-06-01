@@ -19,7 +19,6 @@ local telescope = {
     'nvim-lua/plenary.nvim',
     { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
     'prochri/telescope-all-recent.nvim',
-    'LukasPietzschmann/telescope-tabs',
     "MaximilianLloyd/adjacent.nvim",
     "debugloop/telescope-undo.nvim",
   },
@@ -41,11 +40,6 @@ local telescope = {
       '<leader>ps',
       function() require('telescope.builtin').grep_string({ search = vim.fn.input('Grep > ') }) end,
       desc = 'Search in root directory with Telescope',
-    },
-    {
-      '<leader>pt',
-      function() require('telescope-tabs').list_tabs() end,
-      desc = 'Show open tabs with Telescope',
     },
     {
       "<leader>pfa",
@@ -84,4 +78,6 @@ local lualine = {
   },
 }
 
-return { indent_blankline, treesitter, telescope, comment, which_key, lualine }
+local netrw = { 'prichrd/netrw.nvim', opts = {} }
+
+return { indent_blankline, treesitter, telescope, comment, which_key, lualine, netrw }
