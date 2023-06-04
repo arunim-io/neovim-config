@@ -66,10 +66,12 @@ cmp.setup {
 }
 
 local null_ls = require "null-ls"
+local builtins = null_ls.builtins
 
 null_ls.setup {
   sources = {
-    null_ls.builtins.code_actions.gitsigns,
+    builtins.code_actions.gitsigns,
+    builtins.formatting.prettier,
   }
 }
 
