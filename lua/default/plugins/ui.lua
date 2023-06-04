@@ -80,4 +80,17 @@ local lualine = {
 
 local netrw = { 'prichrd/netrw.nvim', opts = {} }
 
-return { indent_blankline, treesitter, telescope, comment, which_key, lualine, netrw }
+local trouble = {
+  "folke/trouble.nvim",
+  dependencies = { "nvim-tree/nvim-web-devicons" },
+  opts = {},
+  keys = {
+    { "<leader>d",  "<cmd>TroubleToggle<cr>",                       silent = true, noremap = true },
+    { "<leader>dw", "<cmd>TroubleToggle workspace_diagnostics<cr>", silent = true, noremap = true },
+    { "<leader>dd", "<cmd>TroubleToggle document_diagnostics<cr>",  silent = true, noremap = true },
+    { "<leader>dl", "<cmd>TroubleToggle loclist<cr>",               silent = true, noremap = true },
+    { "<leader>qf", "<cmd>TroubleToggle quickfix<cr>",              silent = true, noremap = true },
+  },
+}
+
+return { indent_blankline, treesitter, telescope, comment, which_key, lualine, netrw, trouble }

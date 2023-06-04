@@ -22,11 +22,7 @@ local spectre = {
   'nvim-pack/nvim-spectre',
   dependencies = { 'nvim-lua/plenary.nvim' },
   keys = {
-    {
-      '<leader>S',
-      function() require("spectre").open() end,
-      desc = 'Open Spectre',
-    },
+    { '<leader>S', function() require("spectre").open() end, desc = 'Open Spectre' },
     {
       '<leader>sw',
       function() require("spectre").open_visual({ select_word = true }) end,

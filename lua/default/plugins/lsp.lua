@@ -2,17 +2,17 @@ local lsp_zero = {
   'VonHeikemen/lsp-zero.nvim',
   branch = 'v2.x',
   dependencies = {
-    { 'neovim/nvim-lspconfig' },
+    'neovim/nvim-lspconfig',
     {
       'williamboman/mason.nvim',
       ---@diagnostic disable-next-line: param-type-mismatch
       build = function() pcall(vim.cmd, 'MasonUpdate') end,
     },
-    { 'williamboman/mason-lspconfig.nvim' },
+    'williamboman/mason-lspconfig.nvim',
 
-    { 'hrsh7th/nvim-cmp' },
-    { 'hrsh7th/cmp-nvim-lsp' },
-    { 'L3MON4D3/LuaSnip' },
+    'hrsh7th/nvim-cmp',
+    'hrsh7th/cmp-nvim-lsp',
+    'L3MON4D3/LuaSnip',
   }
 }
 
@@ -28,7 +28,10 @@ local null_ls = {
 
 local inlay_hints = { 'simrat39/inlay-hints.nvim' }
 
-local diagnostic_highlight = { 'Kasama/nvim-custom-diagnostic-highlight', opts = {} }
+local diagnostic_highlight = {
+  'Kasama/nvim-custom-diagnostic-highlight',
+  opts = {},
+}
 
 local aerial = {
   'stevearc/aerial.nvim',
@@ -45,7 +48,10 @@ local aerial = {
   },
 }
 
-local fidget = { 'j-hui/fidget.nvim', opts = {} }
+local fidget = {
+  'j-hui/fidget.nvim',
+  opts = {},
+}
 
 local lightbulb = {
   'kosayoda/nvim-lightbulb',
@@ -68,6 +74,9 @@ local rust = {
   dependencies = { 'nvim-lua/plenary.nvim', 'mfussenegger/nvim-dap' },
 }
 
-local neodev = { "folke/neodev.nvim", opts = {} }
+local neodev = {
+  "folke/neodev.nvim",
+  opts = {},
+}
 
 return { lsp_zero, null_ls, neodev, inlay_hints, flutter, rust, aerial, fidget, lightbulb, diagnostic_highlight }
