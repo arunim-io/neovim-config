@@ -51,4 +51,21 @@ local ccc = {
   },
 }
 
-return { inc_rename, snippets, spectre, twilight, ccc }
+local harpoon = {
+  'ThePrimeagen/harpoon',
+  dependencies = { 'nvim-lua/plenary.nvim' },
+  opts = {
+    global_settings = {
+      save_on_toggle = true,
+    },
+  },
+  keys = {
+    { '<leader>hm', function() require("harpoon.mark").add_file() end, desc = 'Mark current file to harpoon' },
+    {
+      '<leader>hl',
+      function() require("harpoon.ui").toggle_quick_menu() end,
+      desc = 'Show list of marked files with harpoon',
+    },
+  },
+}
+return { inc_rename, snippets, spectre, twilight, ccc, harpoon }
