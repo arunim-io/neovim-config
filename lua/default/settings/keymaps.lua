@@ -4,8 +4,8 @@ local keymap = vim.keymap
 keymap.set('n', '<leader>pv', vim.cmd.Ex, { desc = 'Switch to netrw' })
 
 -- move selected text up and down
-keymap.set("v", "<A-Up>", ":m '<-2<CR>gv=gv", { desc = 'Move selected line up' })
-keymap.set("v", "<A-Down>", ":m '>+1<CR>gv=gv", { desc = 'Move selected line down' })
+keymap.set("v", "<S-Up>", ":m '<-2<CR>gv=gv", { desc = 'Move selected line up' })
+keymap.set("v", "<S-Down>", ":m '>+1<CR>gv=gv", { desc = 'Move selected line down' })
 
 -- append next line to the current one
 keymap.set("n", "J", "mzJ`z", { desc = 'Append next line to the current one' })

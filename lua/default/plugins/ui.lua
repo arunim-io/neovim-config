@@ -93,4 +93,23 @@ local trouble = {
   },
 }
 
-return { indent_blankline, treesitter, telescope, comment, which_key, lualine, netrw, trouble }
+local tmux = {
+  "aserowy/tmux.nvim",
+  lazy = false,
+  opts = {
+    navigation = {
+      enable_default_keybindings = false,
+    },
+    resize = {
+      enable_default_keybindings = false,
+    },
+  },
+  keys = {
+    { '<A-Left>',  [[<cmd>lua require("tmux").move_left()<cr>]] },
+    { '<A-Down>',  [[<cmd>lua require("tmux").move_bottom()<cr>]] },
+    { '<A-Up>',    [[<cmd>lua require("tmux").move_top()<cr>]] },
+    { '<A-Right>', [[<cmd>lua require("tmux").move_right()<cr>]] },
+  },
+}
+
+return { indent_blankline, treesitter, telescope, comment, which_key, lualine, netrw, trouble, tmux }
