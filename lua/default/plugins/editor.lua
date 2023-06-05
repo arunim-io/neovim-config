@@ -7,7 +7,9 @@ local inc_rename = {
       expr = true
     },
   },
-  opts = {},
+  opts = {
+    input_buffer_type = "dressing",
+  },
 }
 
 local snippets = {
