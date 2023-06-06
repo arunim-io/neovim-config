@@ -29,6 +29,7 @@ local telescope = {
     telescope.load_extension('adjacent')
     telescope.load_extension("undo")
     telescope.load_extension('aerial')
+    telescope.load_extension("flutter")
   end,
   keys = {
     {
