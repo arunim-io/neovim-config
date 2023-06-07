@@ -57,3 +57,6 @@ keymap.set({ 'n', 'i' }, '<C-Delete>', 'dw', { desc = "Delete next word", norema
 
 -- Delete previous word
 keymap.set({ 'n', 'i' }, '<C-Bs>', 'db', { desc = "Delete previous word", noremap = true, silent = true })
+
+-- select all
+keymap.set({ 'n', 'i' }, '<C-A>', 'ggVG', { desc = "Select all", noremap = true, silent = true })
