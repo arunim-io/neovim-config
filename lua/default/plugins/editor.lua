@@ -68,4 +68,16 @@ local harpoon = {
     },
   },
 }
-return { inc_rename, snippets, spectre, twilight, ccc, harpoon }
+
+local codeium = {
+  'Exafunction/codeium.vim',
+  lazy = false,
+  keys = {
+    { '<cr>',    function() return vim.fn['codeium#Accept']() end,             'i', expr = true },
+    { '<tab>',   function() return vim.fn['codeium#CycleCompletions'](1) end,  'i', expr = true },
+    { '<S-tab>', function() return vim.fn['codeium#CycleCompletions'](-1) end, 'i', expr = true },
+    { '<esc>',   function() return vim.fn['codeium#Clear']() end,              'i', expr = true },
+  }
+}
+
+return { inc_rename, snippets, spectre, twilight, ccc, harpoon, codeium }
