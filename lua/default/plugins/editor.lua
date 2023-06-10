@@ -67,17 +67,30 @@ local harpoon = {
       desc = 'Show list of marked files with harpoon',
     },
   },
+
 }
 
 local codeium = {
-  'Exafunction/codeium.vim',
-  lazy = false,
-  --   keys = {
-  --     { '<cr>',    function() return vim.fn['codeium#Accept']() end,             'i', expr = true },
-  --     { '<tab>',   function() return vim.fn['codeium#CycleCompletions'](1) end,  'i', expr = true },
-  --     { '<S-tab>', function() return vim.fn['codeium#CycleCompletions'](-1) end, 'i', expr = true },
-  --     { '<esc>',   function() return vim.fn['codeium#Clear']() end,              'i', expr = true },
-  --   }
+  "jcdickinson/codeium.nvim",
+  dependencies = {
+    "nvim-lua/plenary.nvim",
+    "hrsh7th/nvim-cmp",
+    { "jcdickinson/http.nvim", build = "cargo build --workspace --release" }
+  },
+  opts = {},
 }
 
-return { inc_rename, snippets, spectre, twilight, ccc, harpoon, codeium }
+local overseer = {
+  'stevearc/overseer.nvim',
+  opts = {},
+}
+
+local web_devicons = {
+  'nvim-tree/nvim-web-devicons',
+  opts = {
+    default = true,
+    strict = true,
+  },
+}
+
+return { inc_rename, snippets, spectre, twilight, ccc, harpoon, codeium, overseer, web_devicons }

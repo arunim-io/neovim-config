@@ -71,10 +71,15 @@ local which_key = {
 
 local lualine = {
   'nvim-lualine/lualine.nvim',
-  dependencies = { 'nvim-tree/nvim-web-devicons' },
+  dependencies = { 'nvim-tree/nvim-web-devicons', 'arkav/lualine-lsp-progress' },
   opts = {
+    extensions = { 'aerial', 'lazy', 'overseer', 'quickfix', 'trouble' },
     options = {
       theme = 'codedark',
+    },
+    sections = {
+      lualine_c = { 'filename', 'lsp_progress' },
+      lualine_x = { 'overseer', 'encoding', 'fileformat', 'filetype' },
     },
   },
 }

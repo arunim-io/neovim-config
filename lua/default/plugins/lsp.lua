@@ -48,11 +48,6 @@ local aerial = {
   },
 }
 
-local fidget = {
-  'j-hui/fidget.nvim',
-  opts = {},
-}
-
 local lightbulb = {
   'kosayoda/nvim-lightbulb',
   dependencies = { 'antoinemadec/FixCursorHold.nvim' },
@@ -80,4 +75,4 @@ local neodev = {
   opts = {},
 }
 
-return { lsp_zero, null_ls, neodev, inlay_hints, flutter, rust, aerial, fidget, lightbulb, diagnostic_highlight }
+return { lsp_zero, null_ls, neodev, inlay_hints, flutter, rust, aerial, lightbulb, diagnostic_highlight }
