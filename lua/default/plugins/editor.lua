@@ -37,18 +37,15 @@ return {
     dependencies = {
       'nvim-lua/plenary.nvim',
       { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
-      'prochri/telescope-all-recent.nvim',
       "MaximilianLloyd/adjacent.nvim",
       "debugloop/telescope-undo.nvim",
     },
     config = function()
       local telescope = require 'telescope'
 
-      telescope.load_extension('fzf')
-      telescope.load_extension('adjacent')
-      telescope.load_extension("undo")
-      telescope.load_extension('aerial')
-      telescope.load_extension("flutter")
+      telescope.load_extension 'fzf'
+      telescope.load_extension 'adjacent'
+      telescope.load_extension "undo"
     end,
     keys = {
       {

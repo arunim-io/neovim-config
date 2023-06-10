@@ -31,10 +31,13 @@ return {
       "nvim-treesitter/nvim-treesitter",
       "nvim-tree/nvim-web-devicons"
     },
-    opts = {
-      placement = 'edge',
-      autojump = true,
-    },
+    config = function()
+      require('aerial').setup {
+        placement = 'edge',
+        autojump = true,
+      }
+      require('telescope').load_extension 'aerial'
+    end,
     keys = {
       { '<leader>a', '<cmd>AerialToggle!<CR>', desc = 'Open code outline window for current file with Aerial' },
     },
