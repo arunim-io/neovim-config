@@ -35,7 +35,6 @@ local luasnip = require 'luasnip'
 local cmp = require "cmp"
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
----@diagnostic disable: assign-type-mismatch
 cmp.setup {
   snippet = {
     expand = function(args) require('luasnip').lsp_expand(args.body) end,
@@ -86,7 +85,7 @@ null_ls.setup {
 }
 
 require("mason-null-ls").setup {
-  ensure_installed = nil,
+  ensure_installed = true,
   automatic_installation = true,
 }
 
@@ -97,18 +96,11 @@ require('flutter-tools').setup {
   },
 }
 
-local inlay_hints = require 'inlay-hints'
 local rust_tools = require 'rust-tools'
 
 rust_tools.setup {
-  tools = {
-    on_initialized = function() inlay_hints.set_all() end,
-    inlay_hints = { auto = false },
-  },
   server = {
-    on_attach = function(client, bufnr)
-      inlay_hints.on_attach(client, bufnr)
-
+    on_attach = function(_, bufnr)
       vim.keymap.set('n', '<leader>ca', rust_tools.hover_actions.hover_actions, { buffer = bufnr })
     end
   },
