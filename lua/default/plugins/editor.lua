@@ -104,4 +104,19 @@ return {
     },
   },
   { 'stevearc/overseer.nvim', opts = {} },
+  {
+    'stevearc/oil.nvim',
+    lazy = false,
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    opts = {
+      delete_to_trash = true,
+      trash_command = 'trash',
+      view_options = {
+        show_hidden = true,
+      },
+    },
+    keys = {
+      { '<leader>pv', '<cmd>Oil<cr>', desc = 'Open current directory with Oil' },
+    },
+  },
 }

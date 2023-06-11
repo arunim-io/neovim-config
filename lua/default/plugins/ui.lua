@@ -34,7 +34,6 @@ return {
       },
     },
   },
-  { 'prichrd/netrw.nvim',      opts = {} },
   {
     "aserowy/tmux.nvim",
     lazy = false,

@@ -1,29 +1,33 @@
-vim.g.mapleader = ' '
+local globals = vim.g
+local options = vim.opt
 
-local opt = vim.opt
+globals.mapleader = ' '
 
-opt.number = true
+globals.loaded_netrw = 1
+globals.loaded_netrwPlugin = 1
 
-opt.tabstop = 2
-opt.softtabstop = 2
-opt.shiftwidth = 2
-opt.expandtab = true
+options.number = true
 
-opt.smartindent = true
-opt.wrap = true
+options.tabstop = 2
+options.softtabstop = 2
+options.shiftwidth = 2
+options.expandtab = true
 
-opt.swapfile = false
-opt.backup = false
+options.smartindent = true
+options.wrap = true
+
+options.swapfile = false
+options.backup = false
 ---@diagnostic disable-next-line: assign-type-mismatch
-opt.undodir = os.getenv('HOME') .. '/.vim/undodir'
-opt.undofile = true
+options.undodir = os.getenv('HOME') .. '/.vim/undodir'
+options.undofile = true
 
-opt.hlsearch = false
-opt.incsearch = true
+options.hlsearch = false
+options.incsearch = true
 
-opt.termguicolors = true
+options.termguicolors = true
 
 vim.opt.signcolumn = 'yes'
 vim.opt.isfname:append('@-@')
 
-opt.updatetime = 25
+options.updatetime = 25

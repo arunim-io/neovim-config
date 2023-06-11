@@ -1,8 +1,5 @@
 local keymap = vim.keymap
 
--- exit from current file without saving
-keymap.set('n', '<leader>pv', vim.cmd.Ex, { desc = 'Switch to netrw' })
-
 -- move selected text up and down
 keymap.set("v", "<A-Up>", ":m '<-2<CR>gv=gv", { desc = 'Move selected line up' })
 keymap.set("v", "<A-Down>", ":m '>+1<CR>gv=gv", { desc = 'Move selected line down' })
