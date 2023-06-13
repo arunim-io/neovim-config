@@ -1,12 +1,13 @@
 return {
   {
-    'Mofiqul/vscode.nvim',
+    'Everblush/nvim',
+    name = 'everblush',
+    lazy = false,
     priority = 1000,
-    init = function() require('vscode').load() end,
+    init = function() vim.cmd('colorscheme everblush') end,
     opts = {
-      transparent = true,
-      italic_comments = true,
-    },
+      transparent_background = true,
+    }
   },
   {
     "lukas-reineke/indent-blankline.nvim",
@@ -26,7 +27,7 @@ return {
     opts = {
       extensions = { 'aerial', 'lazy', 'overseer', 'quickfix', 'trouble' },
       options = {
-        theme = 'codedark',
+        theme = 'everblush',
       },
       sections = {
         lualine_c = { 'filename', 'lsp_progress' },

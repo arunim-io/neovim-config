@@ -21,6 +21,11 @@ lsp.format_on_save {
   },
 }
 
+lsp.ensure_installed {
+  'lua_ls',
+  'pyright',
+}
+
 lsp.skip_server_setup { 'rust_analyzer' }
 
 lsp.setup()
@@ -86,12 +91,22 @@ local builtins = null_ls.builtins
 null_ls.setup {
   sources = {
     builtins.code_actions.gitsigns,
-    builtins.formatting.prettier,
+    builtins.diagnostics.djlint,
+    builtins.diagnostics.dotenv_linter,
+    builtins.diagnostics.editorconfig_checker,
+    builtins.diagnostics.eslint,
+    builtins.diagnostics.ruff,
+    builtins.formatting.black,
+    builtins.formatting.djlint,
+    builtins.formatting.prettierd,
   }
 }
 
 require("mason-null-ls").setup {
   automatic_installation = true,
+  ---@diagnostic disable-next-line: assign-type-mismatch
+  ensure_installed = nil,
+  handlers = {},
 }
 
 -- flutter config
