@@ -18,17 +18,57 @@ lsp.format_on_save {
   },
   servers = {
     ["lua_ls"] = { "lua" },
+    ['taplo'] = { 'toml' },
+    ['null-ls'] = {
+      'python',
+      'json',
+      'yaml',
+      'yml',
+      'html',
+      'css',
+      'javascript',
+      'typescript',
+      'markdown',
+      'jsonc',
+      'astro',
+      'svelte',
+      'javascriptreact',
+      'typescriptreact',
+    },
   },
 }
 
 lsp.ensure_installed {
   'lua_ls',
   'pyright',
+  'taplo',
 }
 
 lsp.skip_server_setup { 'rust_analyzer' }
 
 lsp.setup()
+
+-- language servers config
+local lspconfig = require 'lspconfig'
+local schema_store = require 'schemastore'
+
+lspconfig.jsonls.setup {
+  settings = {
+    json = {
+      schemas = schema_store.json.schemas(),
+      validate = { enable = true },
+    },
+  },
+}
+
+lspconfig.yamlls.setup {
+  settings = {
+    yaml = {
+      schemaStore = { enable = false },
+      schemas = schema_store.yaml.schemas(),
+    },
+  },
+}
 
 -- nvim-cmp config
 local luasnip = require 'luasnip'
