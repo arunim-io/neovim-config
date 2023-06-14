@@ -1,13 +1,13 @@
 return {
   {
-    'Everblush/nvim',
-    name = 'everblush',
+    'Mofiqul/vscode.nvim',
     lazy = false,
     priority = 1000,
-    init = function() vim.cmd('colorscheme everblush') end,
+    init = function() require('vscode').load() end,
     opts = {
-      transparent_background = true,
-    }
+      transparent = true,
+      italic_comments = true,
+    },
   },
   {
     "lukas-reineke/indent-blankline.nvim",
@@ -20,6 +20,15 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     build = function() require("nvim-treesitter.install").update { with_sync = true } end,
+    dependencies = {},
+    config = function()
+      require('nvim-treesitter.configs').setup {
+        highlight = {
+          enable = true,
+          additional_vim_regex_highlighting = { 'python' }
+        },
+      }
+    end
   },
   {
     'nvim-lualine/lualine.nvim',
@@ -27,7 +36,7 @@ return {
     opts = {
       extensions = { 'aerial', 'lazy', 'overseer', 'quickfix', 'trouble' },
       options = {
-        theme = 'everblush',
+        theme = 'auto',
       },
       sections = {
         lualine_c = { 'filename', 'lsp_progress' },
