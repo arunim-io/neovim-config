@@ -139,6 +139,7 @@ null_ls.setup {
     builtins.formatting.black,
     builtins.formatting.djlint,
     builtins.formatting.prettierd,
+    builtins.formatting.ruff,
   }
 }
 
@@ -151,7 +152,13 @@ require("mason-null-ls").setup {
 
 -- flutter config
 require('flutter-tools').setup {
+  decorations = {
+    device = true,
+    project_config = true,
+  },
+  widget_guides = { enabled = true },
   lsp = {
+    color = { enabled = true },
     capabilites = lsp.build_options('dartls', {}).capabilites,
   },
 }
