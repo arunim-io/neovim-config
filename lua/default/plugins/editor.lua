@@ -4,7 +4,7 @@ return {
     keys = {
       {
         "<leader>rn",
-        function() return ":IncRename " .. vim.fn.expand("<cword>") end,
+        function() return ":IncRename " .. vim.fn.expand "<cword>" end,
         expr = true
       },
     },
@@ -48,6 +48,7 @@ return {
       telescope.load_extension "undo"
     end,
     keys = {
+      { '<leader>b',  function() require('telescope.builtin').buffers() end, desc = 'Open buffers with Telescope' },
       {
         '<leader>pfr',
         function() require('telescope.builtin').find_files() end,
@@ -55,7 +56,7 @@ return {
       },
       {
         '<leader>ps',
-        function() require('telescope.builtin').grep_string { search = vim.fn.input('Grep > ') } end,
+        function() require('telescope.builtin').grep_string { search = vim.fn.input 'Grep > ' } end,
         desc = 'Search in root directory with Telescope',
       },
       {
@@ -65,8 +66,8 @@ return {
         silent = false,
         desc = 'Open adjacent files with Telescope',
       },
-      { "<leader>u",  "<cmd>Telescope undo<cr>",   desc = 'Open undotree with Telescope' },
-      { '<leader>pa', "<cmd>Telescope aerial<cr>", desc = "Open Aerial with Telescope" },
+      { "<leader>u",  "<cmd>Telescope undo<cr>",                             desc = 'Open undotree with Telescope' },
+      { '<leader>pa', "<cmd>Telescope aerial<cr>",                           desc = "Open Aerial with Telescope" },
     },
   },
   { 'numToStr/Comment.nvim',  opts = {} },

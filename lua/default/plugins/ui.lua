@@ -20,7 +20,6 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     build = function() require("nvim-treesitter.install").update { with_sync = true } end,
-    dependencies = {},
     config = function()
       require('nvim-treesitter.configs').setup {
         highlight = {
@@ -35,9 +34,7 @@ return {
     dependencies = { 'nvim-tree/nvim-web-devicons', 'arkav/lualine-lsp-progress' },
     opts = {
       extensions = { 'aerial', 'lazy', 'overseer', 'quickfix', 'trouble' },
-      options = {
-        theme = 'auto',
-      },
+      options = { theme = 'auto' },
       sections = {
         lualine_c = { 'filename', 'lsp_progress' },
         lualine_x = { 'overseer', 'encoding', 'fileformat', 'filetype' },
@@ -48,12 +45,8 @@ return {
     "aserowy/tmux.nvim",
     lazy = false,
     opts = {
-      navigation = {
-        enable_default_keybindings = false,
-      },
-      resize = {
-        enable_default_keybindings = false,
-      },
+      navigation = { enable_default_keybindings = false },
+      resize = { enable_default_keybindings = false },
     },
     keys = {
       { '<A-Left>',  [[<cmd>lua require("tmux").move_left()<cr>]] },

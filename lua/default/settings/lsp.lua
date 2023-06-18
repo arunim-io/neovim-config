@@ -7,15 +7,10 @@ local lsp = require("lsp-zero").preset "recommended"
 lsp.on_attach(function(_, bufnr) lsp.default_keymaps { buffer = bufnr } end)
 
 require("lspconfig").lua_ls.setup(lsp.nvim_lua_ls())
-lsp.nvim_workspace {
-  library = vim.api.nvim_get_runtime_file("", true),
-}
+lsp.nvim_workspace { library = vim.api.nvim_get_runtime_file("", true) }
 
 lsp.format_on_save {
-  format_opts = {
-    async = false,
-    timeout_ms = 10000,
-  },
+  format_opts = { async = false, timeout_ms = 10000 },
   servers = {
     ["lua_ls"] = { "lua" },
     ['taplo'] = { 'toml' },
@@ -38,12 +33,7 @@ lsp.format_on_save {
   },
 }
 
-lsp.ensure_installed {
-  'lua_ls',
-  'pyright',
-  'taplo',
-}
-
+lsp.ensure_installed { 'lua_ls', 'pyright', 'taplo' }
 lsp.skip_server_setup { 'rust_analyzer' }
 
 lsp.setup()
@@ -111,9 +101,7 @@ cmp.setup {
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
     { name = 'codeium' },
-  }, {
-    { name = 'buffer' },
-  }),
+  }, { { name = 'buffer' } }),
   mapping = {
     ["<CR>"] = cmp.mapping.confirm { select = true },
     ["<C-Space>"] = cmp.mapping.complete(),
@@ -152,10 +140,7 @@ require("mason-null-ls").setup {
 
 -- flutter config
 require('flutter-tools').setup {
-  decorations = {
-    device = true,
-    project_config = true,
-  },
+  decorations = { device = true, project_config = true },
   widget_guides = { enabled = true },
   lsp = {
     color = { enabled = true },

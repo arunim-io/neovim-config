@@ -10,7 +10,6 @@ return {
         build = function() pcall(vim.cmd, 'MasonUpdate') end,
       },
       'williamboman/mason-lspconfig.nvim',
-
       'hrsh7th/nvim-cmp',
       'hrsh7th/cmp-nvim-lsp',
       'L3MON4D3/LuaSnip',
@@ -19,19 +18,12 @@ return {
   {
     "jay-babu/mason-null-ls.nvim",
     event = { "BufReadPre", "BufNewFile" },
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-      "williamboman/mason.nvim",
-      "jose-elias-alvarez/null-ls.nvim",
-    },
+    dependencies = { 'nvim-lua/plenary.nvim', "williamboman/mason.nvim", "jose-elias-alvarez/null-ls.nvim" },
   },
   { "b0o/schemastore.nvim" },
   {
     'stevearc/aerial.nvim',
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter",
-      "nvim-tree/nvim-web-devicons"
-    },
+    dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
     config = function()
       require('aerial').setup {
         placement = 'edge',
@@ -70,7 +62,7 @@ return {
   },
   {
     'simrat39/rust-tools.nvim',
-    dependencies = { 'nvim-lua/plenary.nvim', 'mfussenegger/nvim-dap' },
+    dependencies = { 'neovim/nvim-lspconfig', 'nvim-lua/plenary.nvim', 'mfussenegger/nvim-dap' },
   },
   { "folke/neodev.nvim",   opts = {} },
 }
