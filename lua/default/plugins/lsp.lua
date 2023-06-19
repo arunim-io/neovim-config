@@ -4,31 +4,46 @@ return {
     branch = 'v2.x',
     dependencies = {
       'neovim/nvim-lspconfig',
-      {
-        'williamboman/mason.nvim',
-        ---@diagnostic disable-next-line: param-type-mismatch
-        build = function() pcall(vim.cmd, 'MasonUpdate') end,
-      },
+      'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
       'hrsh7th/nvim-cmp',
       'hrsh7th/cmp-nvim-lsp',
       'L3MON4D3/LuaSnip',
-    }
+    },
+  },
+  { 'hrsh7th/nvim-cmp',     version = false },
+  {
+    'williamboman/mason.nvim',
+    ---@diagnostic disable-next-line: param-type-mismatch
+    build = function() pcall(vim.cmd, 'MasonUpdate') end,
   },
   {
-    "jay-babu/mason-null-ls.nvim",
+    "jose-elias-alvarez/null-ls.nvim",
     event = { "BufReadPre", "BufNewFile" },
-    dependencies = { 'nvim-lua/plenary.nvim', "williamboman/mason.nvim", "jose-elias-alvarez/null-ls.nvim" },
+    dependencies = { 'nvim-lua/plenary.nvim', "williamboman/mason.nvim", "jay-babu/mason-null-ls.nvim" },
   },
-  { "b0o/schemastore.nvim" },
+  {
+    'akinsho/flutter-tools.nvim',
+    lazy = false,
+    ft = { 'dart' },
+    dependencies = { 'nvim-lua/plenary.nvim', 'stevearc/dressing.nvim' },
+  },
+  {
+    'simrat39/rust-tools.nvim',
+    ft = { 'rust' },
+    dependencies = { 'neovim/nvim-lspconfig', 'nvim-lua/plenary.nvim', 'mfussenegger/nvim-dap' },
+  },
+  { "folke/neodev.nvim",    opts = {} },
+  { "b0o/schemastore.nvim", ft = { 'json', 'jsonc', 'toml', 'yaml', 'yml' } },
   {
     'stevearc/aerial.nvim',
     dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
-    config = function()
-      require('aerial').setup {
-        placement = 'edge',
-        autojump = true,
-      }
+    opts = {
+      placement = 'edge',
+      autojump = true,
+    },
+    config = function(_, opts)
+      require('aerial').setup(opts)
       require('telescope').load_extension 'aerial'
     end,
     keys = {
@@ -54,15 +69,4 @@ return {
       { "<leader>qf", "<cmd>TroubleToggle quickfix<cr>",              silent = true, noremap = true },
     },
   },
-  {
-    'akinsho/flutter-tools.nvim',
-    lazy = false,
-    ft = { 'dart' },
-    dependencies = { 'nvim-lua/plenary.nvim', 'stevearc/dressing.nvim' },
-  },
-  {
-    'simrat39/rust-tools.nvim',
-    dependencies = { 'neovim/nvim-lspconfig', 'nvim-lua/plenary.nvim', 'mfussenegger/nvim-dap' },
-  },
-  { "folke/neodev.nvim",   opts = {} },
 }

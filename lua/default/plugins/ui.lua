@@ -20,14 +20,13 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     build = function() require("nvim-treesitter.install").update { with_sync = true } end,
-    config = function()
-      require('nvim-treesitter.configs').setup {
-        highlight = {
-          enable = true,
-          additional_vim_regex_highlighting = { 'python' }
-        },
-      }
-    end
+    opts = {
+      highlight = {
+        enable = true,
+        additional_vim_regex_highlighting = { 'python' }
+      },
+    },
+    config = function(_, opts) require('nvim-treesitter.configs').setup(opts) end
   },
   {
     'nvim-lualine/lualine.nvim',
