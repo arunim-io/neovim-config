@@ -69,15 +69,15 @@ return {
       }
     end,
   },
-  { 'numToStr/Comment.nvim',  opts = {} },
+  { 'numToStr/Comment.nvim', config = true },
   {
     "folke/which-key.nvim",
     event = "VeryLazy",
+    config = true,
     init = function()
       vim.o.timeout = true
       vim.o.timeoutlen = 300
     end,
-    opts = {},
   },
   {
     'uga-rosa/ccc.nvim',
@@ -103,7 +103,6 @@ return {
       },
     },
   },
-  { 'stevearc/overseer.nvim', opts = {} },
   {
     'stevearc/oil.nvim',
     lazy = false,
@@ -118,5 +117,15 @@ return {
     keys = {
       { '<leader>pv', '<cmd>Oil<cr>', desc = 'Open current directory with Oil' },
     },
+  },
+  {
+    'tzachar/local-highlight.nvim',
+    config = true,
+    init = function()
+      vim.api.nvim_create_autocmd('BufRead', {
+        pattern = { '*.*' },
+        callback = function(data) require('local-highlight').attach(data.buf) end,
+      })
+    end,
   },
 }

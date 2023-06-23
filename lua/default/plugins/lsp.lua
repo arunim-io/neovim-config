@@ -33,7 +33,7 @@ return {
     ft = { 'rust' },
     dependencies = { 'neovim/nvim-lspconfig', 'nvim-lua/plenary.nvim', 'mfussenegger/nvim-dap' },
   },
-  { "folke/neodev.nvim",    opts = {} },
+  { "folke/neodev.nvim",    config = true },
   { "b0o/schemastore.nvim", ft = { 'json', 'jsonc', 'toml', 'yaml', 'yml' } },
   {
     'stevearc/aerial.nvim',
@@ -60,13 +60,17 @@ return {
   {
     "folke/trouble.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
-    opts = {},
-    keys = {
-      { "<leader>d",  "<cmd>TroubleToggle<cr>",                       silent = true, noremap = true },
-      { "<leader>dw", "<cmd>TroubleToggle workspace_diagnostics<cr>", silent = true, noremap = true },
-      { "<leader>dd", "<cmd>TroubleToggle document_diagnostics<cr>",  silent = true, noremap = true },
-      { "<leader>dl", "<cmd>TroubleToggle loclist<cr>",               silent = true, noremap = true },
-      { "<leader>qf", "<cmd>TroubleToggle quickfix<cr>",              silent = true, noremap = true },
-    },
+    config = true,
+    keys = function()
+      local function set(map, cmd, desc) return { map, cmd, desc, silent = true, noremap = true } end
+
+      return {
+        set("<leader>d", "<cmd>TroubleToggle<cr>", 'Enable/disable Trouble'),
+        set("<leader>dd", "<cmd>TroubleToggle document_diagnostics<cr>", 'Show diagnostics for current buffer'),
+        set("<leader>dw", "<cmd>TroubleToggle workspace_diagnostics<cr>", "Show diagnostics for current workspace"),
+        set("<leader>qf", "<cmd>TroubleToggle quickfix<cr>", 'Show quick fix list'),
+        set("<leader>dl", "<cmd>TroubleToggle loclist<cr>"),
+      }
+    end,
   },
 }

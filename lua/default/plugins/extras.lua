@@ -8,11 +8,11 @@ return {
   },
   {
     "jcdickinson/codeium.nvim",
+    config = true,
     dependencies = {
       "nvim-lua/plenary.nvim",
       "hrsh7th/nvim-cmp",
       { "jcdickinson/http.nvim", build = "cargo build --workspace --release" }
     },
-    opts = {},
   },
 }

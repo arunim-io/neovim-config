@@ -47,12 +47,15 @@ return {
       navigation = { enable_default_keybindings = false },
       resize = { enable_default_keybindings = false },
     },
-    keys = {
-      { '<A-Left>',  [[<cmd>lua require("tmux").move_left()<cr>]] },
-      { '<A-Down>',  [[<cmd>lua require("tmux").move_bottom()<cr>]] },
-      { '<A-Up>',    [[<cmd>lua require("tmux").move_top()<cr>]] },
-      { '<A-Right>', [[<cmd>lua require("tmux").move_right()<cr>]] },
-    },
+    keys = function()
+      local tmux = require 'tmux'
+      return {
+        { '<A-Left>',  function() tmux.move_left() end,   desc = 'Move to left pane' },
+        { '<A-Down>',  function() tmux.move_bottom() end, desc = 'Move to bottom pane' },
+        { '<A-Up>',    function() tmux.move_top() end,    desc = 'Move to top pane' },
+        { '<A-Right>', function() tmux.move_right() end,  desc = 'Move to right pane' },
+      }
+    end,
   },
   {
     'nvim-tree/nvim-web-devicons',
@@ -63,10 +66,10 @@ return {
   },
   {
     "folke/twilight.nvim",
-    opts = {},
+    config = true,
     keys = {
       { '<leader>tl', '<cmd>Twilight <cr>', desc = 'Toggle Twilight' },
     },
   },
-  { 'lewis6991/gitsigns.nvim', opts = {} },
+  { 'lewis6991/gitsigns.nvim', config = true },
 }
