@@ -4,7 +4,19 @@ require('neodev').setup {}
 -- lsp-zero config
 local lsp = require("lsp-zero").preset "recommended"
 
-lsp.on_attach(function(_, bufnr) lsp.default_keymaps { buffer = bufnr } end)
+lsp.on_attach(function(event, bufnr)
+  lsp.default_keymaps { buffer = bufnr, omit = { '<F2>', '<F3>', '<F4>', 'gl' } }
+
+  local maps = vim.lsp.buf
+  local map = vim.keymap.set
+
+  local function opts(desc) return { desc = desc, buffer = event.buf } end
+
+  map("n", "<leader>f", maps.format, opts 'Format current file')
+  map('n', '<leader>ca', maps.code_action, opts 'Open code action menu')
+  map('n', '<leader>dl', vim.diagnostic.open_float, opts 'Show diagnostic for current line')
+  map('n', '<leader>rn', maps.rename, opts 'Rename current word')
+end)
 
 require("lspconfig").lua_ls.setup(lsp.nvim_lua_ls())
 lsp.nvim_workspace { library = vim.api.nvim_get_runtime_file("", true) }
@@ -156,7 +168,7 @@ local rust_tools = require 'rust-tools'
 rust_tools.setup {
   server = {
     on_attach = function(_, bufnr)
-      vim.keymap.set('n', '<leader>ca', rust_tools.hover_actions.hover_actions, { buffer = bufnr })
+      vim.keymap.set('n', '<leader>ca', '<cmd>RustCodeAction<cr>', { buffer = bufnr })
     end
   },
 }

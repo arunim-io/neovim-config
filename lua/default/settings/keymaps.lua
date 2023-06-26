@@ -53,9 +53,3 @@ map(
   "<cmd>!chmod +x %<CR>",
   { silent = true, desc = 'Make the script in current buffer executable' }
 )
-
--- format current file
-map("n", "<leader>f", vim.lsp.buf.format, { desc = 'Format current file' })
-
--- open code action menu
-map('n', '<leader>ca', vim.lsp.buf.code_action, { desc = 'Open code action menu' })

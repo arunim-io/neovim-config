@@ -1,18 +1,5 @@
 return {
   {
-    "smjonas/inc-rename.nvim",
-    keys = {
-      {
-        "<leader>rn",
-        function() return ":IncRename " .. vim.fn.expand "<cword>" end,
-        expr = true
-      },
-    },
-    opts = {
-      input_buffer_type = "dressing",
-    },
-  },
-  {
     "L3MON4D3/LuaSnip",
     version = "1.*",
     build = "make install_jsregexp",
