@@ -1,5 +1,4 @@
-require 'default.settings'
+require 'default.options'
+require 'default.keymaps'
 require 'default.lazy'
-
--- imported separatedly for lsp to work
-require 'default.settings.lsp'
+require 'default.lsp'
